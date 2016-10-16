@@ -2,25 +2,27 @@
 
 docker registry v2 image for raspberry pi, based on the scratch image. The rest is taken from the official registry image.
 
-**Compose**
+## Prequisites
 
-Simply use "make"
+For Ubuntu 16.04 (Xenial), you need the following packages installed:
 
-> make
+    apt install -y golang-go docker.io
 
-Test the image
+## Usage
 
-> make test
+    # Build the image 
+    GOPATH=$HOME/.golang make
+    
+    # Test the image
+    make test
+    
+    # Push it to Docker Hub
+    make push
+    
+    # Cleanup
+    make clean
 
-And push it to the docker hub
-
-> make push
-
-The erase the generated binaries.
-
-> make clean
-
-**Usage**
+## Operation
 
 see: https://docs.docker.com/registry/deploying/
 
@@ -28,7 +30,7 @@ see: https://docs.docker.com/registry/deploying/
 
 The MIT License (MIT)
 
-Copyright (c) 2016 cblomart
+Copyright (c) 2016 Rui Carmo, based on work originally done by cblomart
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
