@@ -3,7 +3,7 @@
 [![Docker Stars](https://img.shields.io/docker/stars/rcarmo/rpi-registry.svg)][hub]
 [![Docker Pulls](https://img.shields.io/docker/pulls/rcarmo/rpi-registry.svg)][hub]
 
-[hub]: https://hub.docker.com/r/rcarmo/alpine-python/
+[hub]: https://hub.docker.com/r/rcarmo/rpi-registry/
 
 Docker registry v2 image for Raspberry Pi, roughly 20MB in size and based on a statically compiled ARM binary.
 
