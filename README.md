@@ -24,13 +24,18 @@ For Ubuntu 16.04 (Xenial), you need the following packages installed:
 
 ## Operation
 
-see: https://docs.docker.com/registry/deploying/, with the caveat that this registry expects a `/data` volume instead of the usual `/var/lib/registry` path.
+See: https://docs.docker.com/registry/deploying/, with the caveat that this registry expects a `/data` volume instead of the usual `/var/lib/registry` path. If you're OK with running an insecure registry for testing, this is the minimum required:
+
+    docker run -d --restart=unless-stopped -p 5000:5000 -v /mnt/registry:/data rcarmo/rpi-registry
+
+I use a Raspberry Pi as front-end to my NAS, mounting `/mnt/registry` in  `fstab` like so:
+
+    //nas/registry /mnt/registry cifs guest,uid=1000,iocharset=utf8  0  0
+
 
 ## Statically linking the server binary
 
 In order to build a statically linked `registry` binary, the `Makefile` sets `CGO_ENABLED=0`. If you're on Ubuntu 16.04 Xenial (`armhf`) and using the Go runtime that comes with it, Go will need to build a number of `.a` files inside `/usr/lib/go-1.6` the first time this is built (hence the need to use `sudo`), in order to have a statically linkable standard library.
-
-These libraries will be re-used the next time you need to generate a statically linked binary.
 
 # License
 
