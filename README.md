@@ -17,6 +17,13 @@ I use a Raspberry Pi as front-end to my NAS, mounting `/mnt/registry` in  `fstab
 
     //nas/registry /mnt/registry cifs guest,uid=1000,iocharset=utf8  0  0
 
+
+## TODO
+
+* [ ] SSL setup and docs
+* [x] Minimal usage docs
+* [x] Update to Go 1.6 and generate statically linked binary
+
 ## Build Prequisites
 
 For Ubuntu 16.04 (Xenial), you need the following packages installed:
