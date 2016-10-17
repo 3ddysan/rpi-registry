@@ -8,7 +8,7 @@ bin:
 	mkdir bin
 
 $(GOPATH)/bin/registry:
-	GOOS=linux GOARCH=arm  GOARM=5 go get github.com/docker/distribution/cmd/registry
+	CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=5 go get github.com/docker/distribution/cmd/registry
 
 build: $(GOPATH)/bin/registry bin
 	cp $(GOPATH)/bin/registry ./bin/

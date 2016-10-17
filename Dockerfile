@@ -1,9 +1,9 @@
 FROM scratch
 
 COPY ./bin/registry /bin/registry
-COPY ./etc/config-example.yml /etc/docker/registry/config.yml
+COPY ./etc/config-example.yml /etc/config.yml
 
-VOLUME ["/var/lib/registry"]
+VOLUME ["/data"]
 EXPOSE 5000
 ENTRYPOINT ["/bin/registry"]
-CMD ["/etc/docker/registry/config.yml"]
+CMD ["serve", "/etc/config.yml"]

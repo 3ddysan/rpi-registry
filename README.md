@@ -1,6 +1,6 @@
 # rpi-registry
 
-docker registry v2 image for raspberry pi, based on the scratch image. The rest is taken from the official registry image.
+docker registry v2 image for Raspberry Pi, based on the scratch image. The rest is taken from the official registry image.
 
 ## Prequisites
 
@@ -10,7 +10,7 @@ For Ubuntu 16.04 (Xenial), you need the following packages installed:
 
 ## Usage
 
-    # Build the image 
+    # Build the image (depending on your Go distribution, you might have to use `sudo` -- see below)
     GOPATH=$HOME/.golang make
     
     # Test the image
@@ -24,7 +24,13 @@ For Ubuntu 16.04 (Xenial), you need the following packages installed:
 
 ## Operation
 
-see: https://docs.docker.com/registry/deploying/
+see: https://docs.docker.com/registry/deploying/, with the caveat that this registry expects a `/data` volume instead of the usual `/var/lib/registry` path.
+
+## Statically linking the server binary
+
+In order to build a statically linked `registry` binary, the `Makefile` sets `CGO_ENABLED=0`. If you're on Ubuntu 16.04 Xenial (`armhf`) and using the Go runtime that comes with it, Go will need to build a number of `.a` files inside `/usr/lib/go-1.6` the first time this is built (hence the need to use `sudo`), in order to have a statically linkable standard library.
+
+These libraries will be re-used the next time you need to generate a statically linked binary.
 
 # License
 
